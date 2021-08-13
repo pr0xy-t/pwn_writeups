@@ -1,0 +1,5 @@
+libc 2.27はtcache double freeのチェックが無いはずだが、いつからか2.27でもチェックが入るようになっている。そのため実行環境のlibcバイナリを要確認。
+
+dockerでFROM ubuntu:18.04と指定するimageは、チェックが入ってるlibc 2.27である。
+そのためdockerを利用せずubuntu 18.04のisoでvmを用意し、xinetdでバイナリを起動して行った。vmを起動中にapt upgradeやpwndbgのインストール、pwntoolsのインストールをしてしまうとlibcが更新されてしまうので注意。
+
