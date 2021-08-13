@@ -1,0 +1,6 @@
+# libs
+
+
+* libc.so.6.cd7c1a035d24122798d97a47a10f6e2b71d58710aecfd392375f1aa9bdde164d
+	* libc6 2.27-3ubuntu1 (amd64 binary)
+
