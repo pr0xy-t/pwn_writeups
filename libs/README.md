@@ -1,6 +1,6 @@
 # Libs
 
-Using qemu's usermode emulation, it is possible to run the target binary with a specific glibc version.
+This makes it possible to run the target binary with a specific glibc version.
 
 This folder contains various versions of glibc and ld, and these debugging symbols file.
 
