@@ -28,7 +28,7 @@ p = gdb.debug( elf.path, sysroot = "./sysroot", gdbscript = script )
 p.interactive()
 ```
 **If glibc symbol information is not loaded, run "set sysroot ./sysroot" in the gdb window when you first break.**
-![set sysroot ./sysroot](./sysroot.png "sysroot.png")
+![set sysroot ./sysroot](https://raw.githubusercontent.com/pr0xy-t/pwn_writeups/master/libs/sysroot.png "sysroot.png")
 
 # Collected files
 
