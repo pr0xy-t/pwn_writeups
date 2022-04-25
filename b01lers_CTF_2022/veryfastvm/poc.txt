@@ -1,0 +1,51 @@
+movc r9 0x1 # 即値1
+movc r8 0x0 # counter 0~4
+movc r7 31 # 即値31
+movc r3 0x3 # 即値3
+movc r5 0x0 
+movfrom r0 0 r0
+jmpz 19 #jmpz .L0
+	mov r0 r8 # .L5:
+	jmpg r3 16 # jmpg r3 .L1
+		movfrom r5 0 r8 # r5 = memory[r8]
+		movc r1 0x0 # 0~31
+		movc r2 0x1 # bit andするための値
+			mov r0 r1 # .L3:
+			jmpg r7 9 # jmpg r7 .L2
+			mov r0 r5
+			and r0 r2
+			jmpz 2 # jmpz .L4
+				movfrom r0 32 r6 # memory[32+i*32+j] 
+			add r1 r9 # .L4:
+			add r2 r2
+			add r6 r9
+			jmp -9 # jmp .L3
+		add r8 r9 # .L2
+		jmp -16 # jmp .L5
+	reset # .L1:
+	mov r0 r8 # ============== .L0:
+	jmpg r3 20 # jmpg r3 .L6
+		movc r1 0x0 # 0~31
+		movc r2 0x1 # bit演算するための値
+			mov r0 r1 # .L8
+			jmpg r7 14 # jmpg r7 .L7
+			time
+			mov r4 r0
+			movfrom r0 32 r6 # cache[32+32*r8+r1]
+			time
+			sub r0 r4
+			jmpg r3 4 ## if(r0>3)jmp .L9
+				movfrom r0 0 r8
+				add r0 r2
+				movto r0 0 r8
+			add r1 r9 # .L9:
+			add r2 r2
+			add r6 r9
+			jmp -14 # jmp .L8
+		add r8 r9 # .L7:
+		jmp -20 # jmp .L0
+	movfrom r0 0 r5 # .L6:
+	movfrom r1 1 r5
+	movfrom r2 2 r5
+	movfrom r3 3 r5
+	magic

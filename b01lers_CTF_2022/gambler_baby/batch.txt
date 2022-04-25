@@ -1,0 +1,10 @@
+break *casino+292
+commands
+	x/s $rdi
+	set {int}$rsi=*$rdi
+#	display/s $rdi
+	continue
+end
+
+run
+
