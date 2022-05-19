@@ -1,0 +1,14 @@
+> load bpf 12, 32 0 0 4, 21 0 9 1073741827, 32 0 0 0, 21 7 0 173, 21 6 0 119, 21 5 0 252, 21 4 0 1, 21 3 0 5, 21 2 0 3, 21 1 0 4, 6 0 0 327718, 6 0 0 2147418112
+> disassemble 
+l0:	ld [4]
+l1:	jeq #0x40000003, l2, l11
+l2:	ld [0]
+l3:	jeq #0xad, l11, l4 # rt_sigreturn
+l4:	jeq #0x77, l11, l5 # sigreturn
+l5:	jeq #0xfc, l11, l6 # exit_group
+l6:	jeq #0x1, l11, l7 # exit
+l7:	jeq #0x5, l11, l8 # open
+l8:	jeq #0x3, l11, l9 # read
+l9:	jeq #0x4, l11, l10 # write
+l10:	ret #0x50026
+l11:	ret #0x7fff0000
